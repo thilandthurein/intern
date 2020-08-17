@@ -11,6 +11,7 @@
 	 <form method="post" action="{{route('patient.update',$patient->id)}}">
     @csrf
     @method('PUT')
+    <h1 style="text-align: center;">PATIENT Edit PAGE</h1>
     <div class="form-group">
       <label for="name">Name</label>
       <input type="text" class="form-control" id="name" name="name" value="{{$patient->name}}">
@@ -51,6 +52,6 @@
      <button type="submit" class="btn btn-primary">Update</button>
 
    </form>
-   
+
 </body>
 </html>
