@@ -44,6 +44,6 @@ Route::resource('/patient','PatientController',[
 			'update'=>'patient.update']
 		]);
 
-Route::post('edit/{id}','StudUpdateController@edit');
+//Route::post('edit/{id}','StudUpdateController@edit');
 // Route::post('/patient','PatientController@store');
 //Route::resource('/patientshow','PatientController')->name('patient.show');

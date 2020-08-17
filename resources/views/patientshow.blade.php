@@ -36,7 +36,7 @@
         <td>{{$row->diseases}}</td>
         <td>{{$row->doctor}}</td>
         <td>{{$row->bdate}}</td>
-        <td><a href="{{route('patientedit',$row->id)}}" class="btn-info">Edit</a></td>
+        <td><a href="{{route('patient.edit',$row->id)}}" class="btn-info">Edit</a></td>
       </tr>
       @endforeach
   </tbody>

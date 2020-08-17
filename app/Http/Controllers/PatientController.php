@@ -63,23 +63,9 @@ class PatientController extends Controller
      */
     public function edit(Request $request,$id) {
 
-        return view('patientedit');
-       /* $name = $request->input('name');
-        $age = $request->input('age');
-        $phone = $request->input('phone');
-        $address = $request->input('address');
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $diseases = $request->input('diseases');
-        $doctor = $request->input('doctor');
-        $bdate = $request->input('bdate');
-        $data=array('name'=>$name,"age"=>$age,"phone"=>$phone,"address"=>$address,"email"=>$email,"password"=>$password,"diseases"->$diseases,"doctor"->$doctor,
-                    "bdate"->$bdate);
-//DB::table('student')->update($data);
-// DB::table('student')->whereIn('id', $id)->update($request->all());
-        DB::update('update patients set name = ?,age=?,phone=?,address=?,email=?,password=?,diseases=?,doctor=?,bdate=? where id = ?',[$name,$age,$phone,$address,$email,$password,$diseases,$doctor,$bdate]);
-        //echo "Record updated successfully.";
-        //echo 'Click Here to go back.';*/
+        $patient=Patient::find($id);
+        $patients=Patient::all();
+        return view('patientedit',compact('patient','patients'));
 }
 
     /**
@@ -91,23 +77,18 @@ class PatientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $name = $request->input('name');
-        $age = $request->input('age');
-        $phone = $request->input('phone');
-        $address = $request->input('address');
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $diseases = $request->input('diseases');
-        $doctor = $request->input('doctor');
-        $bdate = $request->input('bdate');
-        $data=array('name'=>$name,"age"=>$age,"phone"=>$phone,"address"=>$address,"email"=>$email,"password"=>$password,"diseases"->$diseases,"doctor"->$doctor,
-                    "bdate"->$bdate);
-//DB::table('student')->update($data);
-// DB::table('student')->whereIn('id', $id)->update($request->all());
-        DB::update('update patients set name = ?,age=?,phone=?,address=?,email=?,password=?,diseases=?,doctor=?,bdate=? where id = ?',[$name,$age,$phone,$address,$email,$password,$diseases,$doctor,$bdate]);
-        //echo "Record updated successfully.";
-        //echo 'Click Here to go back.';
-        
+        $patient=Patient::find($id);
+        $patient->name=request('name');
+        $patient->age=request('age');
+        $patient->phone=request('phone');
+        $patient->address=request('address');
+        $patient->email=request('email');
+        $patient->password=request('password');
+        $patient->diseases=request('diseases');
+        $patient->doctor=request('doctor');
+        $patient->bdate=request('bdate');
+        $patient->save();
+        return redirect()->route('patient');
     }
 
     /**
